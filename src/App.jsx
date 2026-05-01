@@ -36,7 +36,7 @@ const CircularProgress = ({ percentage, color }) => {
         style={{ strokeDashoffset: offset }}
         d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" 
       />
-      <text x="18" y="20.35" className="stat-value" textAnchor="middle" style={{ fontSize: '8px', fontWeight: 'bold' }}>{percentage}%</text>
+      <text x="18" y="21.5" className="circle-chart-text" textAnchor="middle" style={{ fontSize: '9px' }}>{percentage}%</text>
     </svg>
   );
 };
@@ -76,17 +76,17 @@ function App() {
 
   // --- 상태 관리 ---
   const [activeTab, setActiveTab] = useState('study');
-  const [completedTasks, setCompletedTasks] = useLocalStorage('sf_v5_completedTasks', initialCompletedIds);
-  const [streak, setStreak] = useLocalStorage('sf_v5_streak', 5);
+  const [completedTasks, setCompletedTasks] = useLocalStorage('sf_v6_completedTasks', initialCompletedIds);
+  const [streak, setStreak] = useLocalStorage('sf_v6_streak', 5);
   const [showCalendar, setShowCalendar] = useState(false);
   const [showFullSchedule, setShowFullSchedule] = useState(false);
-  const [history, setHistory] = useLocalStorage('sf_v5_history', {});
+  const [history, setHistory] = useLocalStorage('sf_v6_history', {});
   
-  const [habits, setHabits] = useLocalStorage('sf_v5_habits', [
+  const [habits, setHabits] = useLocalStorage('sf_v6_habits', [
     { id: 1, title: '아침 물 한잔', emoji: '💧' },
     { id: 2, title: '스트레칭 10분', emoji: '🧘' }
   ]);
-  const [completedHabits, setCompletedHabits] = useLocalStorage('sf_v5_completedHabits', []);
+  const [completedHabits, setCompletedHabits] = useLocalStorage('sf_v6_completedHabits', []);
   const [newHabitTitle, setNewHabitTitle] = useState('');
 
   // 1~4일차 초기 히스토리 설정
@@ -171,7 +171,9 @@ function App() {
         </div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
           <h1 style={{ fontSize: '32px' }}>Day {currentDay}</h1>
-          <span style={{ fontSize: '14px', color: '#75777e' }}>Friday, May 1</span>
+          <span style={{ fontSize: '14px', color: '#75777e' }}>
+            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
+          </span>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '20px' }}>
@@ -291,6 +293,7 @@ function App() {
               <h2 style={{ fontSize: '24px' }}>Study Roadmap</h2>
               <button onClick={() => setShowCalendar(false)} style={{ background: 'none', border: 'none', fontSize: '24px', color: '#8293b5' }}>✕</button>
             </div>
+            
             <div className="calendar-grid">
               {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => <div key={d} className="calendar-day-header">{d}</div>)}
               {Array.from({ length: 56 }).map((_, i) => {
@@ -304,18 +307,32 @@ function App() {
                 );
               })}
             </div>
+
+            {/* Today's Summary Section */}
             <div className="summary-box">
-              <h3 className="summary-title">Today's Summary</h3>
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <span className="stat-label">Study</span>
+              <h3 className="summary-title" style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px' }}>Today's Summary</h3>
+              <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div className="stat-item" style={{ background: 'white', padding: '16px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <span className="stat-label" style={{ fontSize: '11px', fontWeight: 700, color: '#8293b5', marginBottom: '8px', textTransform: 'uppercase' }}>Study Completion</span>
                   <CircularProgress percentage={studyProgress} color="var(--secondary)" />
+                  <span style={{ fontSize: '10px', color: '#75777e', marginTop: '8px', fontWeight: 600 }}>
+                    {todaysQuests.filter(t => completedTasks.includes(t.id)).length} / {todaysQuests.length} tasks
+                  </span>
                 </div>
-                <div className="stat-item">
-                  <span className="stat-label">Habit</span>
+                <div className="stat-item" style={{ background: 'white', padding: '16px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <span className="stat-label" style={{ fontSize: '11px', fontWeight: 700, color: '#8293b5', marginBottom: '8px', textTransform: 'uppercase' }}>Habit Completion</span>
                   <CircularProgress percentage={habitProgress} color="var(--mint)" />
+                  <span style={{ fontSize: '10px', color: '#75777e', marginTop: '8px', fontWeight: 600 }}>
+                    {habits.filter(h => completedHabits.includes(`${todayKey}:${h.id}`)).length} / {habits.length} habits
+                  </span>
                 </div>
               </div>
+            </div>
+            
+            <div style={{ marginTop: '20px', padding: '16px', background: 'white', borderRadius: '16px', border: '1px solid #f0f0f0', textAlign: 'center' }}>
+              <p style={{ fontSize: '13px', margin: 0, color: '#44474d' }}>
+                <strong>Tip:</strong> 꾸준한 복습이 장기 기억의 핵심입니다!
+              </p>
             </div>
           </div>
         </div>
