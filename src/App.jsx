@@ -310,19 +310,19 @@ function App() {
 
             {/* Today's Summary Section */}
             <div className="summary-box">
-              <h3 className="summary-title" style={{ fontSize: '16px', fontWeight: 700, marginBottom: '16px' }}>Today's Summary</h3>
-              <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                <div className="stat-item" style={{ background: 'white', padding: '16px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <span className="stat-label" style={{ fontSize: '11px', fontWeight: 700, color: '#8293b5', marginBottom: '8px', textTransform: 'uppercase' }}>Study Completion</span>
+              <h3 className="summary-title">Today's Summary</h3>
+              <div className="stats-grid">
+                <div className="stat-item">
+                  <span className="stat-label">Study Completion</span>
                   <CircularProgress percentage={studyProgress} color="var(--secondary)" />
-                  <span style={{ fontSize: '10px', color: '#75777e', marginTop: '8px', fontWeight: 600 }}>
+                  <span className="stat-subtext">
                     {todaysQuests.filter(t => completedTasks.includes(t.id)).length} / {todaysQuests.length} tasks
                   </span>
                 </div>
-                <div className="stat-item" style={{ background: 'white', padding: '16px', borderRadius: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <span className="stat-label" style={{ fontSize: '11px', fontWeight: 700, color: '#8293b5', marginBottom: '8px', textTransform: 'uppercase' }}>Habit Completion</span>
+                <div className="stat-item">
+                  <span className="stat-label">Habit Completion</span>
                   <CircularProgress percentage={habitProgress} color="var(--mint)" />
-                  <span style={{ fontSize: '10px', color: '#75777e', marginTop: '8px', fontWeight: 600 }}>
+                  <span className="stat-subtext">
                     {habits.filter(h => completedHabits.includes(`${todayKey}:${h.id}`)).length} / {habits.length} habits
                   </span>
                 </div>

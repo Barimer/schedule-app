@@ -121,7 +121,7 @@ h1, h2, h3, h4 {
 
 /* Roadmap Button (Subtle Pill Style) */
 .pill-btn {
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 99px;
   background: var(--surface-container);
   border: none;
@@ -130,6 +130,9 @@ h1, h2, h3, h4 {
   color: var(--secondary);
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .pill-btn:hover {
@@ -142,6 +145,52 @@ h1, h2, h3, h4 {
   padding: 24px 16px;
   background: var(--surface-container);
   border-radius: 24px;
+}
+
+.summary-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--primary);
+  text-align: left;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-item {
+  background: white;
+  padding: 16px 12px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #8293b5;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.stat-subtext {
+  font-size: 10px;
+  color: #75777e;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.circle-chart {
+  width: 64px;
+  height: 64px;
 }
 
 .circle-chart-text {
