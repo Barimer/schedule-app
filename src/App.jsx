@@ -44,7 +44,7 @@ const CircularProgress = ({ percentage, color }) => {
 function App() {
   const START_DATE_STR = '2026-04-27';
   
-  // 날짜 계산 로직
+  // 날짜 계산 로직 (안정적인 로컬 날짜 키 생성)
   const getLocalDateKey = useCallback((date = new Date()) => {
     const y = date.getFullYear();
     const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -57,12 +57,12 @@ function App() {
   const currentDay = useMemo(() => {
     const today = new Date(`${todayKey}T00:00:00`);
     const startDate = new Date(`${START_DATE_STR}T00:00:00`);
-    const diffTime = today - startDate;
+    const diffTime = today.getTime() - startDate.getTime();
     const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24)) + 1;
     return Math.max(1, Math.min(diffDays, 56));
   }, [todayKey]);
 
-  // 이전 과제 자동 완료 처리 (Day 1~4)
+  // 이전 과제 자동 완료 처리 (Day 1~4) - 최초 1회만 실행되도록 설정
   const initialCompletedIds = useMemo(() => {
     const ids = [];
     for (let d = 1; d < currentDay && d <= 4; d++) {
@@ -77,7 +77,6 @@ function App() {
   // --- 상태 관리 ---
   const [activeTab, setActiveTab] = useState('study');
   const [completedTasks, setCompletedTasks] = useLocalStorage('sf_v6_completedTasks', initialCompletedIds);
-  const [streak, setStreak] = useLocalStorage('sf_v6_streak', 5);
   const [showCalendar, setShowCalendar] = useState(false);
   const [showFullSchedule, setShowFullSchedule] = useState(false);
   const [history, setHistory] = useLocalStorage('sf_v6_history', {});
@@ -86,7 +85,8 @@ function App() {
     { id: 1, title: '아침 물 한잔', emoji: '💧' },
     { id: 2, title: '스트레칭 10분', emoji: '🧘' }
   ]);
-  const [completedHabits, setCompletedHabits] = useLocalStorage('sf_v6_completedHabits', []);
+  // 일자별 습관 저장을 위해 string array (todayKey:habitId) 사용
+  const [completedHabits, setCompletedHabits] = useLocalStorage('sf_v6_completedHabits_v2', []);
   const [newHabitTitle, setNewHabitTitle] = useState('');
 
   // 1~4일차 초기 히스토리 설정
@@ -97,6 +97,19 @@ function App() {
       setHistory(initialHist);
     }
   }, [currentDay, history, setHistory]);
+
+  // 스트릭(Streak) 자동 계산
+  const streak = useMemo(() => {
+    let count = 0;
+    // 오늘 이전까지의 연속 달성 확인
+    for (let d = currentDay - 1; d >= 1; d--) {
+      if (history[d]) count++;
+      else break;
+    }
+    // 오늘 완료했으면 +1
+    if (history[currentDay]) count++;
+    return count;
+  }, [history, currentDay]);
 
   // --- 비즈니스 로직 ---
   const todaysQuests = useMemo(() => {
@@ -127,20 +140,25 @@ function App() {
 
   const habitProgress = useMemo(() => {
     if (habits.length === 0) return 0;
-    const completedCount = habits.filter(h => completedHabits.includes(h.id)).length;
+    const completedCount = habits.filter(h => completedHabits.includes(`${todayKey}:${h.id}`)).length;
     return Math.floor((completedCount / habits.length) * 100);
-  }, [habits, completedHabits]);
+  }, [habits, completedHabits, todayKey]);
 
   const toggleTask = (taskId) => {
     setCompletedTasks(prev => {
-      const newCompleted = prev.includes(taskId) 
+      const isRemoving = prev.includes(taskId);
+      const newCompleted = isRemoving 
         ? prev.filter(id => id !== taskId) 
         : [...prev, taskId];
       
-      const currentDayTaskIds = todaysQuests.map(t => t.id);
-      const isDayComplete = currentDayTaskIds.length > 0 && currentDayTaskIds.every(id => newCompleted.includes(id));
+      // 해당 태스크가 오늘 과업인지 확인
+      const isTodayTask = todaysQuests.some(t => t.id === taskId);
+      if (isTodayTask) {
+        const currentDayTaskIds = todaysQuests.map(t => t.id);
+        const isDayComplete = currentDayTaskIds.length > 0 && currentDayTaskIds.every(id => newCompleted.includes(id));
+        setHistory(prevHist => ({ ...prevHist, [currentDay]: isDayComplete }));
+      }
       
-      setHistory(prevHist => ({ ...prevHist, [currentDay]: isDayComplete }));
       return newCompleted;
     });
   };
@@ -153,12 +171,14 @@ function App() {
   };
 
   const toggleHabit = (id) => {
-    setCompletedHabits(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
+    const habitKey = `${todayKey}:${id}`;
+    setCompletedHabits(prev => prev.includes(habitKey) ? prev.filter(i => i !== habitKey) : [...prev, habitKey]);
   };
 
   const deleteHabit = (id) => {
     setHabits(habits.filter(h => h.id !== id));
-    setCompletedHabits(completedHabits.filter(i => i !== id));
+    // 관련 완료 기록도 모두 삭제
+    setCompletedHabits(completedHabits.filter(i => !i.endsWith(`:${id}`)));
   };
 
   return (
@@ -172,7 +192,7 @@ function App() {
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
           <h1 style={{ fontSize: '32px' }}>Day {currentDay}</h1>
           <span style={{ fontSize: '14px', color: '#75777e' }}>
-            {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}
+            {new Date().toLocaleDateString('ko-KR', { weekday: 'long', month: 'short', day: 'numeric' })}
           </span>
         </div>
 
@@ -210,7 +230,7 @@ function App() {
                     <div className="task-content">
                       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <span className="task-tag tag-debt">DEBT (Day {task.day})</span>
-                        <span style={{ fontSize: '12px', color: '#75777e' }}>{task.revisionStep}st Read</span>
+                        <span style={{ fontSize: '12px', color: '#75777e' }}>{task.revisionStep}단계 복습</span>
                       </div>
                       <h3 className="task-title">{task.title}</h3>
                       <p style={{ fontSize: '14px', color: '#44474d', margin: '0 0 8px 0' }}>({task.category})</p>
@@ -229,16 +249,16 @@ function App() {
                     <div className={`check-circle ${completedTasks.includes(task.id) ? 'completed' : ''}`} onClick={() => toggleTask(task.id)}></div>
                     <div className="task-content">
                       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <span className={`task-tag ${task.type === 'new' ? 'tag-new' : 'tag-rev'}`}>{task.type === 'new' ? 'NEW' : `${task.gap} DAYS AGO`}</span>
-                        <span style={{ fontSize: '12px', color: task.type === 'new' ? 'var(--secondary)' : '#75777e' }}>{task.revisionStep}st Read</span>
+                        <span className={`task-tag ${task.type === 'new' ? 'tag-new' : 'tag-rev'}`}>{task.type === 'new' ? 'NEW' : `${task.gap}일 전 복습`}</span>
+                        <span style={{ fontSize: '12px', color: task.type === 'new' ? 'var(--secondary)' : '#75777e' }}>{task.revisionStep}단계 학습</span>
                       </div>
                       <h3 className="task-title">{task.title}</h3>
                       <p style={{ fontSize: '14px', color: '#44474d', margin: '0 0 8px 0' }}>({task.category})</p>
-                      <div className="task-meta"><span>📚</span><span>{task.pages}</span></div>
+                      <div className="task-meta">{task.pages && <span>📚</span>}<span>{task.pages}</span></div>
                     </div>
                   </div>
                 ))}
-                {todaysQuests.length === 0 && <div className="empty-state">🎉 No tasks scheduled!</div>}
+                {todaysQuests.length === 0 && <div className="empty-state">🎉 오늘은 예정된 과업이 없습니다!</div>}
               </div>
             </div>
           </>
@@ -252,10 +272,10 @@ function App() {
             <div className="habit-list">
               {habits.map(h => (
                 <div key={h.id} className="task-card">
-                  <div className={`check-circle ${completedHabits.includes(h.id) ? 'completed' : ''}`} onClick={() => toggleHabit(h.id)}></div>
+                  <div className={`check-circle ${completedHabits.includes(`${todayKey}:${h.id}`) ? 'completed' : ''}`} onClick={() => toggleHabit(h.id)}></div>
                   <div className="task-content">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <h3 className="task-title" style={{ textDecoration: completedHabits.includes(h.id) ? 'line-through' : 'none', opacity: completedHabits.includes(h.id) ? 0.6 : 1 }}>
+                      <h3 className="task-title" style={{ textDecoration: completedHabits.includes(`${todayKey}:${h.id}`) ? 'line-through' : 'none', opacity: completedHabits.includes(`${todayKey}:${h.id}`) ? 0.6 : 1 }}>
                         <span style={{ marginRight: '8px' }}>{h.emoji}</span>{h.title}
                       </h3>
                       <button className="delete-btn" onClick={() => deleteHabit(h.id)}>✕</button>
@@ -295,7 +315,7 @@ function App() {
             </div>
             
             <div className="calendar-grid">
-              {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => <div key={d} className="calendar-day-header">{d}</div>)}
+              {['월', '화', '수', '목', '금', '토', '일'].map(d => <div key={d} className="calendar-day-header">{d}</div>)}
               {Array.from({ length: 56 }).map((_, i) => {
                 const dayNum = i + 1;
                 const isCompleted = history[dayNum];
@@ -310,20 +330,20 @@ function App() {
 
             {/* Today's Summary Section */}
             <div className="summary-box">
-              <h3 className="summary-title">Today's Summary</h3>
+              <h3 className="summary-title">오늘의 요약</h3>
               <div className="stats-grid">
                 <div className="stat-item">
-                  <span className="stat-label">Study Completion</span>
+                  <span className="stat-label">학습 달성도</span>
                   <CircularProgress percentage={studyProgress} color="var(--secondary)" />
                   <span className="stat-subtext">
-                    {todaysQuests.filter(t => completedTasks.includes(t.id)).length} / {todaysQuests.length} tasks
+                    {todaysQuests.filter(t => completedTasks.includes(t.id)).length} / {todaysQuests.length} 과업
                   </span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-label">Habit Completion</span>
+                  <span className="stat-label">습관 달성도</span>
                   <CircularProgress percentage={habitProgress} color="var(--mint)" />
                   <span className="stat-subtext">
-                    {habits.filter(h => completedHabits.includes(`${todayKey}:${h.id}`)).length} / {habits.length} habits
+                    {habits.filter(h => completedHabits.includes(`${todayKey}:${h.id}`)).length} / {habits.length} 습관
                   </span>
                 </div>
               </div>
@@ -343,7 +363,7 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowFullSchedule(false)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <h2 style={{ fontSize: '24px' }}>Full Roadmap</h2>
+              <h2 style={{ fontSize: '24px' }}>전체 로드맵</h2>
               <button onClick={() => setShowFullSchedule(false)} style={{ background: 'none', border: 'none', fontSize: '24px', color: '#8293b5' }}>✕</button>
             </div>
             <div style={{ overflowY: 'auto', maxHeight: '60vh' }}>
@@ -356,7 +376,11 @@ function App() {
                         <span>Day {day.day} ({day.date})</span>
                         {history[day.day] && <span>🌟</span>}
                       </div>
-                      {day.tasks.map(t => <div key={t.id} style={{ fontSize: '12px', color: '#44474d', marginTop: '2px' }}>• {t.title}</div>)}
+                      {day.tasks.map(t => (
+                        <div key={t.id} style={{ fontSize: '12px', color: '#44474d', marginTop: '2px' }}>
+                          • {t.title} {t.pages && <span style={{ color: '#8e9199', marginLeft: '4px' }}>({t.pages})</span>}
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>
