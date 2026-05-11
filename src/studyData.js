@@ -3,131 +3,131 @@ export const studyData = [
     "day": 1,
     "date": "4/27",
     "tasks": [
-      { "id": "d1-new", "type": "new", "title": "의학 1", "pages": "p. 2~16", "category": "의학이론", "revisionStep": 1 }
+      { "id": "d1-new", "type": "new", "title": "의학 1", "pages": "p. 2~13", "category": "의학이론", "revisionStep": 1 }
     ]
   },
   {
     "day": 2,
     "date": "4/28",
     "tasks": [
-      { "id": "d2-new", "type": "new", "title": "의학 2", "pages": "p. 17~31", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d2-rev-1", "type": "rev", "title": "의학 1", "pages": "p. 2~16", "category": "의학이론", "revisionStep": 2, "gap": 1 }
+      { "id": "d2-new", "type": "new", "title": "의학 2", "pages": "p. 14~27", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d2-rev-1", "type": "rev", "title": "의학 1", "pages": "p. 2~13", "category": "의학이론", "revisionStep": 2, "gap": 1 }
     ]
   },
   {
     "day": 3,
     "date": "4/29",
     "tasks": [
-      { "id": "d3-new", "type": "new", "title": "의학 3", "pages": "p. 32~46", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d3-rev-1", "type": "rev", "title": "의학 2", "pages": "p. 17~31", "category": "의학이론", "revisionStep": 2, "gap": 1 }
+      { "id": "d3-new", "type": "new", "title": "의학 3", "pages": "p. 28~45", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d3-rev-1", "type": "rev", "title": "의학 2", "pages": "p. 14~27", "category": "의학이론", "revisionStep": 2, "gap": 1 }
     ]
   },
   {
     "day": 4,
     "date": "4/30",
     "tasks": [
-      { "id": "d4-new", "type": "new", "title": "의학 4", "pages": "p. 47~61", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d4-rev-1", "type": "rev", "title": "의학 3", "pages": "p. 32~46", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d4-rev-3", "type": "rev", "title": "의학 1", "pages": "p. 2~16", "category": "의학이론", "revisionStep": 3, "gap": 3 }
+      { "id": "d4-new", "type": "new", "title": "의학 4", "pages": "p. 46~61", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d4-rev-1", "type": "rev", "title": "의학 3", "pages": "p. 28~45", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d4-rev-3", "type": "rev", "title": "의학 1", "pages": "p. 2~13", "category": "의학이론", "revisionStep": 3, "gap": 3 }
     ]
   },
   {
     "day": 5,
     "date": "5/1",
     "tasks": [
-      { "id": "d5-new", "type": "new", "title": "의학 5", "pages": "p. 62~76", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d5-rev-1", "type": "rev", "title": "의학 4", "pages": "p. 47~61", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d5-rev-3", "type": "rev", "title": "의학 2", "pages": "p. 17~31", "category": "의학이론", "revisionStep": 3, "gap": 3 }
+      { "id": "d5-new", "type": "new", "title": "의학 5", "pages": "p. 62~75", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d5-rev-1", "type": "rev", "title": "의학 4", "pages": "p. 46~61", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d5-rev-3", "type": "rev", "title": "의학 2", "pages": "p. 14~27", "category": "의학이론", "revisionStep": 3, "gap": 3 }
     ]
   },
   {
     "day": 6,
     "date": "5/2",
     "tasks": [
-      { "id": "d6-new", "type": "new", "title": "의학 6", "pages": "p. 77~91", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d6-rev-1", "type": "rev", "title": "의학 5", "pages": "p. 62~76", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d6-rev-3", "type": "rev", "title": "의학 3", "pages": "p. 32~46", "category": "의학이론", "revisionStep": 3, "gap": 3 }
+      { "id": "d6-new", "type": "new", "title": "의학 6", "pages": "p. 76~91", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d6-rev-1", "type": "rev", "title": "의학 5", "pages": "p. 62~75", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d6-rev-3", "type": "rev", "title": "의학 3", "pages": "p. 28~45", "category": "의학이론", "revisionStep": 3, "gap": 3 }
     ]
   },
   {
     "day": 7,
     "date": "5/3",
     "tasks": [
-      { "id": "d7-new", "type": "new", "title": "의학 7", "pages": "p. 92~106", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d7-rev-1", "type": "rev", "title": "의학 6", "pages": "p. 77~91", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d7-rev-3", "type": "rev", "title": "의학 4", "pages": "p. 47~61", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d7-rev-6", "type": "rev", "title": "의학 1", "pages": "p. 2~16", "category": "의학이론", "revisionStep": 4, "gap": 6 }
+      { "id": "d7-new", "type": "new", "title": "의학 7", "pages": "p. 92~105", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d7-rev-1", "type": "rev", "title": "의학 6", "pages": "p. 76~91", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d7-rev-3", "type": "rev", "title": "의학 4", "pages": "p. 46~61", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d7-rev-6", "type": "rev", "title": "의학 1", "pages": "p. 2~13", "category": "의학이론", "revisionStep": 4, "gap": 6 }
     ]
   },
   {
     "day": 8,
     "date": "5/4",
     "tasks": [
-      { "id": "d8-new", "type": "new", "title": "의학 8", "pages": "p. 107~121", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d8-rev-1", "type": "rev", "title": "의학 7", "pages": "p. 92~106", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d8-rev-3", "type": "rev", "title": "의학 5", "pages": "p. 62~76", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d8-rev-6", "type": "rev", "title": "의학 2", "pages": "p. 17~31", "category": "의학이론", "revisionStep": 4, "gap": 6 }
+      { "id": "d8-new", "type": "new", "title": "의학 8", "pages": "p. 106~121", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d8-rev-1", "type": "rev", "title": "의학 7", "pages": "p. 92~105", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d8-rev-3", "type": "rev", "title": "의학 5", "pages": "p. 62~75", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d8-rev-6", "type": "rev", "title": "의학 2", "pages": "p. 14~27", "category": "의학이론", "revisionStep": 4, "gap": 6 }
     ]
   },
   {
     "day": 9,
     "date": "5/5",
     "tasks": [
-      { "id": "d9-new", "type": "new", "title": "의학 9", "pages": "p. 122~136", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d9-rev-1", "type": "rev", "title": "의학 8", "pages": "p. 107~121", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d9-rev-3", "type": "rev", "title": "의학 6", "pages": "p. 77~91", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d9-rev-6", "type": "rev", "title": "의학 3", "pages": "p. 32~46", "category": "의학이론", "revisionStep": 4, "gap": 6 }
+      { "id": "d9-new", "type": "new", "title": "의학 9", "pages": "p. 122~135", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d9-rev-1", "type": "rev", "title": "의학 8", "pages": "p. 106~121", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d9-rev-3", "type": "rev", "title": "의학 6", "pages": "p. 76~91", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d9-rev-6", "type": "rev", "title": "의학 3", "pages": "p. 28~45", "category": "의학이론", "revisionStep": 4, "gap": 6 }
     ]
   },
   {
     "day": 10,
     "date": "5/6",
     "tasks": [
-      { "id": "d10-new", "type": "new", "title": "의학 10", "pages": "p. 137~151", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d10-rev-1", "type": "rev", "title": "의학 9", "pages": "p. 122~136", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d10-rev-3", "type": "rev", "title": "의학 7", "pages": "p. 92~106", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d10-rev-6", "type": "rev", "title": "의학 4", "pages": "p. 47~61", "category": "의학이론", "revisionStep": 4, "gap": 6 }
+      { "id": "d10-new", "type": "new", "title": "의학 10", "pages": "p. 136~151", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d10-rev-1", "type": "rev", "title": "의학 9", "pages": "p. 122~135", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d10-rev-3", "type": "rev", "title": "의학 7", "pages": "p. 92~105", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d10-rev-6", "type": "rev", "title": "의학 4", "pages": "p. 46~61", "category": "의학이론", "revisionStep": 4, "gap": 6 }
     ]
   },
   {
     "day": 11,
     "date": "5/7",
     "tasks": [
-      { "id": "d11-new", "type": "new", "title": "의학 11", "pages": "p. 152~166", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d11-rev-1", "type": "rev", "title": "의학 10", "pages": "p. 137~151", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d11-rev-3", "type": "rev", "title": "의학 8", "pages": "p. 107~121", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d11-rev-6", "type": "rev", "title": "의학 5", "pages": "p. 62~76", "category": "의학이론", "revisionStep": 4, "gap": 6 }
+      { "id": "d11-new", "type": "new", "title": "의학 11", "pages": "p. 152~169", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d11-rev-1", "type": "rev", "title": "의학 10", "pages": "p. 136~151", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d11-rev-3", "type": "rev", "title": "의학 8", "pages": "p. 106~121", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d11-rev-6", "type": "rev", "title": "의학 5", "pages": "p. 62~75", "category": "의학이론", "revisionStep": 4, "gap": 6 }
     ]
   },
   {
     "day": 12,
     "date": "5/8",
     "tasks": [
-      { "id": "d12-new", "type": "new", "title": "의학 12", "pages": "p. 167~181", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d12-rev-1", "type": "rev", "title": "의학 11", "pages": "p. 152~166", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d12-rev-3", "type": "rev", "title": "의학 9", "pages": "p. 122~136", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d12-rev-6", "type": "rev", "title": "의학 6", "pages": "p. 77~91", "category": "의학이론", "revisionStep": 4, "gap": 6 }
+      { "id": "d12-new", "type": "new", "title": "의학 12", "pages": "p. 170~189", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d12-rev-1", "type": "rev", "title": "의학 11", "pages": "p. 152~169", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d12-rev-3", "type": "rev", "title": "의학 9", "pages": "p. 122~135", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d12-rev-6", "type": "rev", "title": "의학 6", "pages": "p. 76~91", "category": "의학이론", "revisionStep": 4, "gap": 6 }
     ]
   },
   {
     "day": 13,
     "date": "5/9",
     "tasks": [
-      { "id": "d13-new", "type": "new", "title": "의학 13", "pages": "p. 182~196", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d13-rev-1", "type": "rev", "title": "의학 12", "pages": "p. 167~181", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d13-rev-3", "type": "rev", "title": "의학 10", "pages": "p. 137~151", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d13-rev-6", "type": "rev", "title": "의학 7", "pages": "p. 92~106", "category": "의학이론", "revisionStep": 4, "gap": 6 }
+      { "id": "d13-new", "type": "new", "title": "의학 13", "pages": "p. 190~203", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d13-rev-1", "type": "rev", "title": "의학 12", "pages": "p. 170~189", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d13-rev-3", "type": "rev", "title": "의학 10", "pages": "p. 136~151", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d13-rev-6", "type": "rev", "title": "의학 7", "pages": "p. 92~105", "category": "의학이론", "revisionStep": 4, "gap": 6 }
     ]
   },
   {
     "day": 14,
     "date": "5/10",
     "tasks": [
-      { "id": "d14-new", "type": "new", "title": "의학 14", "pages": "p. 197~215", "category": "의학이론", "revisionStep": 1 },
-      { "id": "d14-rev-1", "type": "rev", "title": "의학 13", "pages": "p. 182~196", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d14-rev-3", "type": "rev", "title": "의학 11", "pages": "p. 152~166", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d14-rev-6", "type": "rev", "title": "의학 8", "pages": "p. 107~121", "category": "의학이론", "revisionStep": 4, "gap": 6 },
-      { "id": "d14-rev-13", "type": "rev", "title": "의학 1", "pages": "p. 2~16", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d14-new", "type": "new", "title": "의학 14", "pages": "p. 204~215", "category": "의학이론", "revisionStep": 1 },
+      { "id": "d14-rev-1", "type": "rev", "title": "의학 13", "pages": "p. 190~203", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d14-rev-3", "type": "rev", "title": "의학 11", "pages": "p. 152~169", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d14-rev-6", "type": "rev", "title": "의학 8", "pages": "p. 106~121", "category": "의학이론", "revisionStep": 4, "gap": 6 },
+      { "id": "d14-rev-13", "type": "rev", "title": "의학 1", "pages": "p. 2~13", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -135,10 +135,10 @@ export const studyData = [
     "date": "5/11",
     "tasks": [
       { "id": "d15-new", "type": "new", "title": "책근 개념 전체 (Ch 1~3)", "pages": "", "category": "책임·근재보험", "revisionStep": 1 },
-      { "id": "d15-rev-1", "type": "rev", "title": "의학 14", "pages": "p. 197~215", "category": "의학이론", "revisionStep": 2, "gap": 1 },
-      { "id": "d15-rev-3", "type": "rev", "title": "의학 12", "pages": "p. 167~181", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d15-rev-6", "type": "rev", "title": "의학 9", "pages": "p. 122~136", "category": "의학이론", "revisionStep": 4, "gap": 6 },
-      { "id": "d15-rev-13", "type": "rev", "title": "의학 2", "pages": "p. 17~31", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d15-rev-1", "type": "rev", "title": "의학 14", "pages": "p. 204~215", "category": "의학이론", "revisionStep": 2, "gap": 1 },
+      { "id": "d15-rev-3", "type": "rev", "title": "의학 12", "pages": "p. 170~189", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d15-rev-6", "type": "rev", "title": "의학 9", "pages": "p. 122~135", "category": "의학이론", "revisionStep": 4, "gap": 6 },
+      { "id": "d15-rev-13", "type": "rev", "title": "의학 2", "pages": "p. 14~27", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -147,9 +147,9 @@ export const studyData = [
     "tasks": [
       { "id": "d16-new", "type": "new", "title": "책근 사례 기출 1/4 (1~10번)", "pages": "", "category": "책임·근재보험", "revisionStep": 1 },
       { "id": "d16-rev-1", "type": "rev", "title": "책근 개념 전체 (Ch 1~3)", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
-      { "id": "d16-rev-3", "type": "rev", "title": "의학 13", "pages": "p. 182~196", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d16-rev-6", "type": "rev", "title": "의학 10", "pages": "p. 137~151", "category": "의학이론", "revisionStep": 4, "gap": 6 },
-      { "id": "d16-rev-13", "type": "rev", "title": "의학 3", "pages": "p. 32~46", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d16-rev-3", "type": "rev", "title": "의학 13", "pages": "p. 190~203", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d16-rev-6", "type": "rev", "title": "의학 10", "pages": "p. 136~151", "category": "의학이론", "revisionStep": 4, "gap": 6 },
+      { "id": "d16-rev-13", "type": "rev", "title": "의학 3", "pages": "p. 28~45", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -158,9 +158,9 @@ export const studyData = [
     "tasks": [
       { "id": "d17-new", "type": "new", "title": "책근 사례 기출 2/4 (11~20번)", "pages": "", "category": "책임·근재보험", "revisionStep": 1 },
       { "id": "d17-rev-1", "type": "rev", "title": "책근 사례 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
-      { "id": "d17-rev-3", "type": "rev", "title": "의학 14", "pages": "p. 197~215", "category": "의학이론", "revisionStep": 3, "gap": 3 },
-      { "id": "d17-rev-6", "type": "rev", "title": "의학 11", "pages": "p. 152~166", "category": "의학이론", "revisionStep": 4, "gap": 6 },
-      { "id": "d17-rev-13", "type": "rev", "title": "의학 4", "pages": "p. 47~61", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d17-rev-3", "type": "rev", "title": "의학 14", "pages": "p. 204~215", "category": "의학이론", "revisionStep": 3, "gap": 3 },
+      { "id": "d17-rev-6", "type": "rev", "title": "의학 11", "pages": "p. 152~169", "category": "의학이론", "revisionStep": 4, "gap": 6 },
+      { "id": "d17-rev-13", "type": "rev", "title": "의학 4", "pages": "p. 46~61", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -170,8 +170,8 @@ export const studyData = [
       { "id": "d18-new", "type": "new", "title": "책근 사례 기출 3/4 (21~32번)", "pages": "", "category": "책임·근재보험", "revisionStep": 1 },
       { "id": "d18-rev-1", "type": "rev", "title": "책근 사례 2/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d18-rev-3", "type": "rev", "title": "책근 개념 (Ch 1~3)", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
-      { "id": "d18-rev-6", "type": "rev", "title": "의학 12", "pages": "p. 167~181", "category": "의학이론", "revisionStep": 4, "gap": 6 },
-      { "id": "d18-rev-13", "type": "rev", "title": "의학 5", "pages": "p. 62~76", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d18-rev-6", "type": "rev", "title": "의학 12", "pages": "p. 170~189", "category": "의학이론", "revisionStep": 4, "gap": 6 },
+      { "id": "d18-rev-13", "type": "rev", "title": "의학 5", "pages": "p. 62~75", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -181,8 +181,8 @@ export const studyData = [
       { "id": "d19-new", "type": "new", "title": "책근 사례 기출 4/4 (33~44번)", "pages": "", "category": "책임·근재보험", "revisionStep": 1 },
       { "id": "d19-rev-1", "type": "rev", "title": "책근 사례 3/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d19-rev-3", "type": "rev", "title": "책근 사례 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
-      { "id": "d19-rev-6", "type": "rev", "title": "의학 13", "pages": "p. 182~196", "category": "의학이론", "revisionStep": 4, "gap": 6 },
-      { "id": "d19-rev-13", "type": "rev", "title": "의학 6", "pages": "p. 77~91", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d19-rev-6", "type": "rev", "title": "의학 13", "pages": "p. 190~203", "category": "의학이론", "revisionStep": 4, "gap": 6 },
+      { "id": "d19-rev-13", "type": "rev", "title": "의학 6", "pages": "p. 76~91", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -192,8 +192,8 @@ export const studyData = [
       { "id": "d20-new", "type": "new", "title": "책근 유형별 1/4 (1~11번)", "pages": "", "category": "책임·근재보험", "revisionStep": 1 },
       { "id": "d20-rev-1", "type": "rev", "title": "책근 사례 4/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d20-rev-3", "type": "rev", "title": "책근 사례 2/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
-      { "id": "d20-rev-6", "type": "rev", "title": "의학 14", "pages": "p. 197~215", "category": "의학이론", "revisionStep": 4, "gap": 6 },
-      { "id": "d20-rev-13", "type": "rev", "title": "의학 7", "pages": "p. 92~106", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d20-rev-6", "type": "rev", "title": "의학 14", "pages": "p. 204~215", "category": "의학이론", "revisionStep": 4, "gap": 6 },
+      { "id": "d20-rev-13", "type": "rev", "title": "의학 7", "pages": "p. 92~105", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -204,7 +204,7 @@ export const studyData = [
       { "id": "d21-rev-1", "type": "rev", "title": "책근 유형 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d21-rev-3", "type": "rev", "title": "책근 사례 3/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
       { "id": "d21-rev-6", "type": "rev", "title": "책근 개념 (Ch 1~3)", "pages": "", "category": "책임·근재보험", "revisionStep": 4, "gap": 6 },
-      { "id": "d21-rev-13", "type": "rev", "title": "의학 8", "pages": "p. 107~121", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d21-rev-13", "type": "rev", "title": "의학 8", "pages": "p. 106~121", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -215,7 +215,7 @@ export const studyData = [
       { "id": "d22-rev-1", "type": "rev", "title": "책근 유형 2/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d22-rev-3", "type": "rev", "title": "책근 사례 4/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
       { "id": "d22-rev-6", "type": "rev", "title": "책근 사례 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 4, "gap": 6 },
-      { "id": "d22-rev-13", "type": "rev", "title": "의학 9", "pages": "p. 122~136", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d22-rev-13", "type": "rev", "title": "의학 9", "pages": "p. 122~135", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -226,7 +226,7 @@ export const studyData = [
       { "id": "d23-rev-1", "type": "rev", "title": "책근 유형 3/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d23-rev-3", "type": "rev", "title": "책근 유형 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
       { "id": "d23-rev-6", "type": "rev", "title": "책근 사례 2/4", "pages": "", "category": "책임·근재보험", "revisionStep": 4, "gap": 6 },
-      { "id": "d23-rev-13", "type": "rev", "title": "의학 10", "pages": "p. 137~151", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d23-rev-13", "type": "rev", "title": "의학 10", "pages": "p. 136~151", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -237,7 +237,7 @@ export const studyData = [
       { "id": "d24-rev-1", "type": "rev", "title": "책근 유형 4/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d24-rev-3", "type": "rev", "title": "책근 유형 2/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
       { "id": "d24-rev-6", "type": "rev", "title": "책근 사례 3/4", "pages": "", "category": "책임·근재보험", "revisionStep": 4, "gap": 6 },
-      { "id": "d24-rev-13", "type": "rev", "title": "의학 11", "pages": "p. 152~166", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d24-rev-13", "type": "rev", "title": "의학 11", "pages": "p. 152~169", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -248,7 +248,7 @@ export const studyData = [
       { "id": "d25-rev-1", "type": "rev", "title": "책근 약술 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d25-rev-3", "type": "rev", "title": "책근 유형 3/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
       { "id": "d25-rev-6", "type": "rev", "title": "책근 사례 4/4", "pages": "", "category": "책임·근재보험", "revisionStep": 4, "gap": 6 },
-      { "id": "d25-rev-13", "type": "rev", "title": "의학 12", "pages": "p. 167~181", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d25-rev-13", "type": "rev", "title": "의학 12", "pages": "p. 170~189", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -259,7 +259,7 @@ export const studyData = [
       { "id": "d26-rev-1", "type": "rev", "title": "책근 약술 2/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d26-rev-3", "type": "rev", "title": "책근 유형 4/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
       { "id": "d26-rev-6", "type": "rev", "title": "책근 유형 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 4, "gap": 6 },
-      { "id": "d26-rev-13", "type": "rev", "title": "의학 13", "pages": "p. 182~196", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d26-rev-13", "type": "rev", "title": "의학 13", "pages": "p. 190~203", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
@@ -270,7 +270,7 @@ export const studyData = [
       { "id": "d27-rev-1", "type": "rev", "title": "책근 약술 3/4", "pages": "", "category": "책임·근재보험", "revisionStep": 2, "gap": 1 },
       { "id": "d27-rev-3", "type": "rev", "title": "책근 약술 1/4", "pages": "", "category": "책임·근재보험", "revisionStep": 3, "gap": 3 },
       { "id": "d27-rev-6", "type": "rev", "title": "책근 유형 2/4", "pages": "", "category": "책임·근재보험", "revisionStep": 4, "gap": 6 },
-      { "id": "d27-rev-13", "type": "rev", "title": "의학 14", "pages": "p. 197~215", "category": "의학이론", "revisionStep": 5, "gap": 13 }
+      { "id": "d27-rev-13", "type": "rev", "title": "의학 14", "pages": "p. 204~215", "category": "의학이론", "revisionStep": 5, "gap": 13 }
     ]
   },
   {
