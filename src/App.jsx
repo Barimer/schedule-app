@@ -89,6 +89,22 @@ function App() {
   const [completedHabits, setCompletedHabits] = useLocalStorage('sf_v6_completedHabits_v2', []);
   const [newHabitTitle, setNewHabitTitle] = useState('');
 
+  // 팩 스케줄 계산 (5월 10일 기준 3일 주기)
+  const maskInfo = useMemo(() => {
+    const baseDate = new Date('2026-05-10T00:00:00');
+    const today = new Date(`${todayKey}T00:00:00`);
+    const diffTime = today.getTime() - baseDate.getTime();
+    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+    
+    // 3일 주기: 0, 3, 6... 일 때 팩 하는 날
+    const remainder = diffDays % 3;
+    const isMaskDay = remainder === 0;
+    // 다음 팩까지 남은 일수 계산
+    const daysUntilNext = isMaskDay ? 0 : 3 - (remainder < 0 ? (remainder + 3) % 3 : remainder);
+    
+    return { isMaskDay, daysUntilNext };
+  }, [todayKey]);
+
   // 1~4일차 초기 히스토리 설정
   useEffect(() => {
     if (Object.keys(history).length === 0) {
@@ -187,7 +203,7 @@ function App() {
       <header style={{ padding: '24px 20px', background: 'white', borderBottom: '1px solid #f0f0f0', position: 'sticky', top: 0, zIndex: 10 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
           <span style={{ fontSize: '12px', fontWeight: 700, color: '#8293b5', letterSpacing: '0.05em' }}>CURRENT PROGRESS</span>
-          <span style={{ fontSize: '24px' }}>👤</span>
+          <span style={{ fontSize: '24px', cursor: 'pointer' }} onClick={() => setActiveTab('profile')}>👤</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
           <h1 style={{ fontSize: '32px' }}>Day {currentDay}</h1>
@@ -262,7 +278,7 @@ function App() {
               </div>
             </div>
           </>
-        ) : (
+        ) : activeTab === 'habit' ? (
           <div className="habit-tab">
             <h2 style={{ fontSize: '20px', marginBottom: '16px' }}>Daily Habits</h2>
             <form className="habit-input-group" onSubmit={handleAddHabit}>
@@ -286,6 +302,56 @@ function App() {
               {habits.length === 0 && <div className="empty-state">🧘 나만의 습관을 만들어보세요.</div>}
             </div>
           </div>
+        ) : (
+          <div className="profile-tab">
+            <h2 style={{ fontSize: '20px', marginBottom: '16px' }}>Face Mask Schedule</h2>
+            
+            <div className="task-card" style={{ borderLeft: `4px solid ${maskInfo.isMaskDay ? 'var(--mint)' : 'var(--outline-variant)'}`, marginBottom: '24px' }}>
+              <div style={{ fontSize: '24px' }}>🎭</div>
+              <div className="task-content">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <h3 className="task-title" style={{ margin: 0 }}>Next Mask Day</h3>
+                  <span className={`task-tag ${maskInfo.isMaskDay ? 'tag-new' : 'tag-rev'}`} style={{ backgroundColor: maskInfo.isMaskDay ? 'rgba(74, 222, 128, 0.2)' : '#f0f0f0', color: maskInfo.isMaskDay ? '#00a856' : '#75777e' }}>
+                    {maskInfo.isMaskDay ? 'TODAY' : `D-${maskInfo.daysUntilNext}`}
+                  </span>
+                </div>
+                <p style={{ fontSize: '14px', color: '#44474d', marginTop: '4px' }}>
+                  {maskInfo.isMaskDay 
+                    ? '오늘은 팩을 하는 날입니다! 피부에 휴식을 주세요.' 
+                    : `다음 팩까지 ${maskInfo.daysUntilNext}일 남았습니다. (3일 주기)`}
+                </p>
+              </div>
+            </div>
+
+            <div className="section-header"><span>📅</span> Mask Calendar (56 Days)</div>
+            <div className="calendar-grid" style={{ background: 'white', padding: '16px', borderRadius: '16px', border: '1px solid #f0f0f0', boxShadow: 'var(--shadow)' }}>
+              {['월', '화', '수', '목', '금', '토', '일'].map(d => <div key={d} className="calendar-day-header">{d}</div>)}
+              {Array.from({ length: 56 }).map((_, i) => {
+                const dayNum = i + 1;
+                
+                // 5월 10일(Day 14) 기준 3일 주기 계산
+                const isMaskDay = (dayNum - 14) % 3 === 0 && dayNum >= 14;
+                const isPastMaskDay = dayNum < 14 && (14 - dayNum) % 3 === 0;
+                const highlight = isMaskDay || isPastMaskDay;
+
+                return (
+                  <div key={i} className={`calendar-cell ${dayNum === currentDay ? 'today' : ''}`} style={{ 
+                    backgroundColor: highlight ? 'rgba(74, 222, 128, 0.15)' : 'transparent',
+                    border: highlight ? '1.5px solid var(--mint)' : '1px solid #f8f9fa',
+                    position: 'relative',
+                    opacity: dayNum < currentDay ? 0.5 : 1
+                  }}>
+                    <span className="day-num" style={{ color: highlight ? '#00a856' : '#8e9199', fontWeight: highlight ? 800 : 400 }}>D{dayNum}</span>
+                    {highlight && <span style={{ fontSize: '10px', marginTop: '2px' }}>🎭</span>}
+                  </div>
+                );
+              })}
+            </div>
+            
+            <div style={{ marginTop: '20px', padding: '12px', color: '#75777e', fontSize: '12px', textAlign: 'center' }}>
+              * 초록색으로 강조된 날이 팩을 하는 날입니다.
+            </div>
+          </div>
         )}
       </main>
 
@@ -300,7 +366,7 @@ function App() {
         <div onClick={() => setShowCalendar(true)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: showCalendar ? 'var(--secondary)' : '#8e9199', cursor: 'pointer' }}>
           <span style={{ fontSize: '20px' }}>📅</span><span style={{ fontSize: '10px', fontWeight: 600 }}>Calendar</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#8e9199' }}>
+        <div onClick={() => setActiveTab('profile')} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: activeTab === 'profile' ? 'var(--secondary)' : '#8e9199', cursor: 'pointer' }}>
           <span style={{ fontSize: '20px' }}>👤</span><span style={{ fontSize: '10px', fontWeight: 600 }}>Profile</span>
         </div>
       </nav>
