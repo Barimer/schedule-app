@@ -341,7 +341,10 @@ function App() {
                     position: 'relative',
                     opacity: dayNum < currentDay ? 0.5 : 1
                   }}>
-                    <span className="day-num" style={{ color: highlight ? '#00a856' : '#8e9199', fontWeight: highlight ? 800 : 400 }}>D{dayNum}</span>
+                    <span className="day-num" style={{ color: highlight ? '#00a856' : '#8e9199', fontWeight: highlight ? 800 : 400, textAlign: 'center', lineHeight: '1.2' }}>
+                      {studyData[i]?.date || ''}<br/>
+                      <span style={{ fontSize: '8px', fontWeight: 500 }}>({['월', '화', '수', '목', '금', '토', '일'][(dayNum - 1) % 7]})</span>
+                    </span>
                     {highlight && <span style={{ fontSize: '10px', marginTop: '2px' }}>🎭</span>}
                   </div>
                 );
@@ -439,7 +442,7 @@ function App() {
                   {studyData.slice(wIdx * 7, (wIdx + 1) * 7).map(day => (
                     <div key={day.day} style={{ padding: '12px', background: day.day === currentDay ? 'rgba(41, 81, 203, 0.05)' : 'white', borderRadius: '12px', border: day.day === currentDay ? '1px solid var(--secondary)' : '1px solid #f0f0f0', marginBottom: '8px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: '14px' }}>
-                        <span>Day {day.day} ({day.date})</span>
+                        <span>Day {day.day} ({day.date}, {['월', '화', '수', '목', '금', '토', '일'][(day.day - 1) % 7]})</span>
                         {history[day.day] && <span>🌟</span>}
                       </div>
                       {day.tasks.map(t => (
